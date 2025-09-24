@@ -24,7 +24,8 @@ struct CollectionEntity: IndexedEntity {
         DisplayRepresentation(
             title: "\(name)",
             subtitle: "\(subtitle)",
-            image: .init(named: collection.thumbnailImage)
+           // image: .init(named: collection.thumbnailImage)
+            image: .init(url: URL(string: collection.thumbnailImageURL)!) // For URLs
         )
     }
 

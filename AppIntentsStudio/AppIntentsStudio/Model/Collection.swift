@@ -13,12 +13,14 @@ class Collection: Codable, Identifiable, Sendable {
     var name: String
     var description: String
     var rating: Double
-    
-    init(id: Int, name: String, description: String, rating: Double = 4) {
+    var visualSearchImageId: String?
+
+    init(id: Int, name: String, description: String, rating: Double = 4, visualSearchImageId: String? = nil) {
         self.id = id
         self.name = name
         self.description = description
         self.rating = rating
+        self.visualSearchImageId = visualSearchImageId
     }
     
     var thumbnailImage: String {
@@ -113,4 +115,25 @@ extension Collection {
             rating: 4.1
         )
     ]
+}
+
+
+extension Collection {
+    var thumbnailImageURL: String {
+        switch id {
+        case 1: return "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=300&h=200&fit=crop"  // Coffee
+        case 2: return "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop"  // Minimalist
+        case 3: return "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=300&h=200&fit=crop"  // Night Sky
+        case 4: return "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=200&fit=crop"  // Urban Sketching
+        case 5: return "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&h=200&fit=crop"  // Sourdough
+        case 6: return "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=200&fit=crop"  // Vinyl
+        case 7: return "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&h=200&fit=crop"  // Plants
+        case 8: return "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=300&h=200&fit=crop"  // Digital Detox
+        case 9: return "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop"  // Sunset
+        case 10: return "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=300&h=200&fit=crop" // Cheese
+        case 11: return "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop" // Morning Rituals
+        case 12: return "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=200&fit=crop" // Reading Nooks
+        default: return "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=200&fit=crop"
+        }
+    }
 }
